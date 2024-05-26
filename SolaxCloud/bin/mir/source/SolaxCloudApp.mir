@@ -1,0 +1,75 @@
+[ @file = "D:\Developing\SolaxCloudGarmin\SolaxCloud\source\SolaxCloudApp.mc"; @line = 1; ]
+import Toybox.Application;
+[ @file = "D:\Developing\SolaxCloudGarmin\SolaxCloud\source\SolaxCloudApp.mc"; @line = 2; ]
+import Toybox.Lang;
+[ @file = "D:\Developing\SolaxCloudGarmin\SolaxCloud\source\SolaxCloudApp.mc"; @line = 3; ]
+import Toybox.WatchUi;
+[ @file = "D:\Developing\SolaxCloudGarmin\SolaxCloud\source\SolaxCloudApp.mc"; @line = 5; ]
+class SolaxCloudApp extends Application.AppBase{
+    [ @file = "D:\Developing\SolaxCloudGarmin\SolaxCloud\source\SolaxCloudApp.mc"; @line = 5; ]
+    <init> {
+    }
+    [ @file = "D:\Developing\SolaxCloudGarmin\SolaxCloud\source\SolaxCloudApp.mc"; @line = 5; ]
+    static
+    <init> {
+    }
+    [ @file = "D:\Developing\SolaxCloudGarmin\SolaxCloud\source\SolaxCloudApp.mc"; @line = 7; ]
+    function initialize() as Void {
+D_Developing_SolaxCloudGarmin_SolaxCloud_source_SolaxCloudApp_mc_7_26_9_4_start:
+[ "D:\Developing\SolaxCloudGarmin\SolaxCloud\source\SolaxCloudApp.mc" 8 8 ]
+        %tmp.2 = getv ? :AppBase;
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+D_Developing_SolaxCloudGarmin_SolaxCloud_source_SolaxCloudApp_mc_7_26_9_4_stop:
+    }
+    [ @file = "D:\Developing\SolaxCloudGarmin\SolaxCloud\source\SolaxCloudApp.mc"; @line = 12; ]
+    function onStart(state as Dictionary or Null) as Void {
+D_Developing_SolaxCloudGarmin_SolaxCloud_source_SolaxCloudApp_mc_12_51_19_4_start:
+[ "D:\Developing\SolaxCloudGarmin\SolaxCloud\source\SolaxCloudApp.mc" 17 8 ]
+        [ "D_Developing_SolaxCloudGarmin_SolaxCloud_source_SolaxCloudApp_mc_12_51_19_4_start" "D_Developing_SolaxCloudGarmin_SolaxCloud_source_SolaxCloudApp_mc_12_51_19_4_stop" ]
+        %request.1 = local;
+        %tmp.4 = getv ? :JsonRequest;
+        %tmp.5 = "https://ip.jsontest.com/";
+        %tmp.6 = newd 0;
+        %tmp.1 = newc %tmp.4 (%tmp.5, %tmp.6);
+        lputv %request.1 %tmp.1;
+[ "D:\Developing\SolaxCloudGarmin\SolaxCloud\source\SolaxCloudApp.mc" 18 8 ]
+        %tmp.7 = lgetv %request.1;
+        %tmp.8 = getv function %tmp.7 :makeRequest;
+        invoke %tmp.7 %tmp.8();
+D_Developing_SolaxCloudGarmin_SolaxCloud_source_SolaxCloudApp_mc_12_51_19_4_stop:
+    }
+    [ @file = "D:\Developing\SolaxCloudGarmin\SolaxCloud\source\SolaxCloudApp.mc"; @line = 22; ]
+    function onStop(state as Dictionary or Null) as Void {
+    }
+    [ @file = "D:\Developing\SolaxCloudGarmin\SolaxCloud\source\SolaxCloudApp.mc"; @line = 26; ]
+    function getInitialView() as [Views] or [Views, InputDelegates] {
+D_Developing_SolaxCloudGarmin_SolaxCloud_source_SolaxCloudApp_mc_26_68_28_4_start:
+[ "D:\Developing\SolaxCloudGarmin\SolaxCloud\source\SolaxCloudApp.mc" 27 8 ]
+        %tmp.1 = newa 2;
+        %tmp.5 = getv ? :SolaxCloudView;
+        %tmp.2 = newc %tmp.5 ();
+        %tmp.6 = dup %tmp.1;
+        %tmp.7 = aputv %tmp.6 0 %tmp.2;
+        %tmp.11 = getv ? :SolaxCloudDelegate;
+        %tmp.8 = newc %tmp.11 ();
+        %tmp.12 = dup %tmp.7;
+        %tmp.13 = aputv %tmp.12 1 %tmp.8;
+        ret %tmp.13;
+D_Developing_SolaxCloudGarmin_SolaxCloud_source_SolaxCloudApp_mc_26_68_28_4_stop:
+    }
+}
+[ @file = "D:\Developing\SolaxCloudGarmin\SolaxCloud\source\SolaxCloudApp.mc"; @line = 32; ]
+function getApp() as SolaxCloudApp {
+D_Developing_SolaxCloudGarmin_SolaxCloud_source_SolaxCloudApp_mc_32_35_34_0_start:
+[ "D:\Developing\SolaxCloudGarmin\SolaxCloud\source\SolaxCloudApp.mc" 33 4 ]
+    %tmp.1 = getm $.Toybox.Application;
+    %tmp.2 = getv function %tmp.1 :getApp;
+    %tmp.3 = invoke %tmp.1 %tmp.2();
+    %tmp.4 = as %tmp.3 SolaxCloudApp;
+    ret %tmp.4;
+D_Developing_SolaxCloudGarmin_SolaxCloud_source_SolaxCloudApp_mc_32_35_34_0_stop:
+}
+[ @file = "D:\Developing\SolaxCloudGarmin\SolaxCloud\source\SolaxCloudApp.mc"; @line = 1; ]
+<init> {
+}
