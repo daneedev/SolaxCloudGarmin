@@ -1,5 +1,5 @@
 import Toybox.System;
-import Toybox.Communications.*;
+import Toybox.Communications;
 import Toybox.Lang;
 
 class JsonRequest {
@@ -10,20 +10,20 @@ class JsonRequest {
         self.url = _url;
         self.params = _params;
     }
+    
+    public function makeRequest() as Void {
+        Communications.checkWifiConnection(method(:handleConnection));
+    }
 
-    function onReceive(responseCode as Number, data as Dictionary?) as Void {
-        if (responseCode == 200) {
-            System.println("Data received.");
-            System.println(data);
+    function handleConnection(result as {:wifiAvailable as Boolean, :errorCode as Communications.WifiConnectionStatus }) as Void {
+        if (result[:wifiAvailable]) {
+            System.println("Wifi is available");
         } else {
-            System.println("Error: " + responseCode);
-            System.println(data);
+            System.println("Wifi is not available");
         }
     }
-    
-    function makeRequest() as Void {
-        var responseCallback = method(:onReceive);
 
+    function sendRequest() as Void {
         var options = {                                             // set the options
             :method => Communications.HTTP_REQUEST_METHOD_GET,      // set HTTP method
             :headers => {                                           // set headers
@@ -33,5 +33,15 @@ class JsonRequest {
             :timeout => 5000 
         };
         Communications.makeWebRequest(url, params, options, method(:onReceive));
+    }
+
+    function onReceive(responseCode as Number, data as Dictionary?) as Void {
+        if (responseCode == 200) {
+            System.println("Data received.");
+            System.println(data);
+        } else {
+            System.println("Error: " + responseCode);
+            System.println(data);
+        }
     }
 }
