@@ -25,7 +25,7 @@ class JsonRequest {
             sendRequest();
         } else {
             System.println("Wifi is not available");
-            callback.invoke()
+            callback.invoke({:wifi => false});
         }
     }
 
@@ -45,7 +45,7 @@ class JsonRequest {
     function onReceive(responseCode as Number, data as Dictionary?) as Void {
         if (responseCode == 200) {
             System.println("Data received.");
-            callback.invoke({wifi => true, data => data}); // Return data using callback
+            callback.invoke({:wifi => true, :data => data}); // Return data using callback
         } else {
             System.println("Error: " + responseCode);
         }
