@@ -1,0 +1,9 @@
+<settings>
+    <setting propertyKey="@Properties.tokenId" title="Token ID">
+        <settingConfig type="alphaNumeric" required="true" />
+    </setting>
+
+    <setting propertyKey="@Properties.InverterSerial" title="Inverter Serial">
+        <settingConfig type="alphaNumeric" required="true" />
+    </setting>
+</settings>
