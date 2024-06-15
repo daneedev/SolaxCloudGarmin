@@ -1,4 +1,98 @@
 <layout id="MainLayout">
-    <label x="center" y="5" text="@Strings.prompt" color="Graphics.COLOR_WHITE" justification="Graphics.TEXT_JUSTIFY_CENTER" />
-    <bitmap id="id_monkey" x="center" y="30" filename="../drawables/monkey.png" />
+    <label 
+    text="SolaxCloud"
+    x="center"
+    y="5%"
+    font="Gfx.FONT_SMALL"
+    justification="Gfx.TEXT_JUSTIFY_CENTER"
+    />
+    <bitmap id="acpower" filename="../drawables/acpower.png" x="15%" y="15%"/>
+    <label 
+    text="- W"
+    id="ac_power"
+    x="40%"
+    y="15%"
+    font="Gfx.FONT_TINY"
+    justification="Gfx.TEXT_JUSTIFY_CENTER"
+    />
+    <bitmap id="yield" filename="../drawables/yield.png" x="52%" y="15%"/>
+    <label 
+    text="- kWh"
+    id="yield_today"
+    x="78%"
+    y="15%"
+    font="Gfx.FONT_TINY"
+    justification="Gfx.TEXT_JUSTIFY_CENTER"
+    />
+    <bitmap id="panel1" filename="../drawables/panel.png" x="5%" y="25%"/>
+    <label 
+    text="1: - W"
+    id="pv1"
+    x="33%"
+    y="25%"
+    font="Gfx.FONT_TINY"
+    justification="Gfx.TEXT_JUSTIFY_CENTER"
+    />
+    <bitmap id="panel2" filename="../drawables/panel.png" x="50%" y="25%"/>
+    <label 
+    text="2: - W"
+    id="pv2"
+    x="78%"
+    y="25%"
+    font="Gfx.FONT_TINY"
+    justification="Gfx.TEXT_JUSTIFY_CENTER"
+    />
+    <bitmap id="panel3" filename="../drawables/panel.png" x="5%" y="37%"/>
+    <label 
+    text="3: - W"
+    id="pv3"
+    x="33%"
+    y="37%"
+    font="Gfx.FONT_TINY"
+    justification="Gfx.TEXT_JUSTIFY_CENTER"
+    />
+    <bitmap id="panel4" filename="../drawables/panel.png" x="50%" y="37%"/>
+    <label 
+    text="4: - W"
+    id="pv4"
+    x="78%"
+    y="37%"
+    font="Gfx.FONT_TINY"
+    justification="Gfx.TEXT_JUSTIFY_CENTER"
+    />
+    <bitmap id="feedin" filename="../drawables/feedin.png" x="25%" y="47%" />
+    <label 
+    text="- W"
+    id="feed_in"
+    x="center"
+    y="47%"
+    font="Gfx.FONT_TINY"
+    justification="Gfx.TEXT_JUSTIFY_CENTER"
+    />
+    <bitmap id="battery" filename="../drawables/battery.png" x="15%" y="58%" />
+    <label 
+    text="- %"
+    id="soc"
+    x="38%"
+    y="60%"
+    font="Gfx.FONT_TINY"
+    justification="Gfx.TEXT_JUSTIFY_CENTER"
+    />
+    <bitmap id="battery_charge" filename="../drawables/battery-charge.png" x="50%" y="60%" />
+    <label 
+    text="- W"
+    id="bat_power"
+    x="70%"
+    y="60%"
+    font="Gfx.FONT_TINY"
+    justification="Gfx.TEXT_JUSTIFY_CENTER"
+    />
+    <label 
+    text=""
+    id="update_time"
+    x="center"
+    y="75%"
+    font="Gfx.FONT_TINY"
+    justification="Gfx.TEXT_JUSTIFY_CENTER"
+    />
 </layout>
