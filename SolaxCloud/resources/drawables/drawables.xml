@@ -1,3 +1,4 @@
 <drawables>
     <bitmap id="LauncherIcon" filename="logo.png" />
+    <bitmap id="blank" filename="blank.png" />
 </drawables>
