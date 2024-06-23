@@ -21,10 +21,8 @@ class JsonRequest {
     // Handle the wifi connection
     function handleConnection(result as {:wifiAvailable as Boolean, :errorCode as Communications.WifiConnectionStatus }) as Void {
         if (result[:wifiAvailable]) {
-            System.println("Wifi is available");
             sendRequest();
         } else {
-            System.println("Wifi is not available");
             callback.invoke({:wifi => false});
         }
     }
