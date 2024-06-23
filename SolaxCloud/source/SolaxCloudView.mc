@@ -71,6 +71,7 @@ class SolaxCloudView extends WatchUi.View {
                 showError("Inverter Serial is empty!");
                 return;
             }
+            showError("Loading...");
             request = new JsonRequest("https://eu.solaxcloud.com/proxyApp/proxy/api/getRealtimeInfo.do", {"tokenId" => tokenId, "sn" => inverterSerial}, method(:receiveData));
             request.makeRequest();
     }
@@ -84,6 +85,18 @@ class SolaxCloudView extends WatchUi.View {
         } else if  (result == null) {
             request.makeRequest();
         } else {
+        _error.setText("");
+        // ICONS
+        _acPowerIcon.setBitmap(Rez.Drawables.acpower);
+        _yieldTodayIcon.setBitmap(Rez.Drawables.yield);
+        _feedInIcon.setBitmap(Rez.Drawables.feedin);
+        _pv1icon.setBitmap(Rez.Drawables.panel1);
+        _pv2icon.setBitmap(Rez.Drawables.panel2);
+        _pv3icon.setBitmap(Rez.Drawables.panel3);
+        _pv4icon.setBitmap(Rez.Drawables.panel4);
+        _socIcon.setBitmap(Rez.Drawables.battery);
+        _batteryPowerIcon.setBitmap(Rez.Drawables.battery_charge);
+        // TEXT DATA
         _acPower.setText(result.get("acpower").toNumber() + " W");
         _yieldToday.setText(result.get("yieldtoday").format("%.2f") + " kWh");
         _feedIn.setText(result.get("feedinpower").toNumber() + " W");
