@@ -90,7 +90,7 @@
     <label 
     text=""
     id="bat_power"
-    x="70%"
+    x="75%"
     y="60%"
     font="Gfx.FONT_TINY"
     justification="Gfx.TEXT_JUSTIFY_CENTER"
