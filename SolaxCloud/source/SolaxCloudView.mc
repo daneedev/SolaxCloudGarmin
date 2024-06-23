@@ -63,16 +63,21 @@ class SolaxCloudView extends WatchUi.View {
     // loading resources into memory.
     function onShow() as Void {
             var tokenId = Properties.getValue("tokenId");
-            var inverterSerial = Properties.getValue("InverterSerial");
+            var inverterSerial = Properties.getValue("InverterSerial"); 
+            if (tokenId.equals("")) {
+                showError("Token ID is empty!");
+                return;
+            } else if (inverterSerial.equals("")) {
+                showError("Inverter Serial is empty!");
+                return;
+            }
             request = new JsonRequest("https://eu.solaxcloud.com/proxyApp/proxy/api/getRealtimeInfo.do", {"tokenId" => tokenId, "sn" => inverterSerial}, method(:receiveData));
             request.makeRequest();
     }
 
     function receiveData(data) {
         var result = data.get(:data).get("result");
-        if (data.get(:data).get("code") == 101) {
-            showError("Token ID field is empty!");
-        } else if (data.get(:data).get("code") == 103) {
+        if (data.get(:data).get("code") == 103) {
             showError("Invalid Token ID");
         } else if (data.get(:data).get("code") == 0 && data.get(:data).get("success") == false) {
             showError("Invalid Inverter Serial");
