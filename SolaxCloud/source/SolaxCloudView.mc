@@ -77,14 +77,16 @@ class SolaxCloudView extends WatchUi.View {
     }
 
     function receiveData(data) {
-        var result = data.get(:data).get("result");
-        if (data.get(:data).get("code") == 103) {
+        if (data.get(:wifi) == false) {
+            showError("Wifi is not available");
+        } else if (data.get(:data).get("code") == 103) {
             showError("Invalid Token ID");
         } else if (data.get(:data).get("code") == 0 && data.get(:data).get("success") == false) {
             showError("Invalid Inverter Serial");
-        } else if  (result == null) {
+        } else if  (data.get(:data).get("result") == null) {
             request.makeRequest();
         } else {
+        var result = data.get(:data).get("result");
         _error.setText("");
         // ICONS
         _acPowerIcon.setBitmap(Rez.Drawables.acpower);
