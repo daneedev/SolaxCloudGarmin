@@ -69,10 +69,10 @@ class SolaxCloudView extends WatchUi.View {
         var result = data.get(:data).get("result");
         _error.setText("");
         // COUNT THE PANEL POWER
-       var panelPower = (result.get("powerdc1") != null ? result.get("powerdc1").toNumber() : 0) +
+       var panelPower = ((result.get("powerdc1") != null ? result.get("powerdc1").toNumber() : 0) +
                         (result.get("powerdc2") != null ? result.get("powerdc2").toNumber() : 0) +
                         (result.get("powerdc3") != null ? result.get("powerdc3").toNumber() : 0) +
-                        (result.get("powerdc4") != null ? result.get("powerdc4").toNumber() : 0);
+                        (result.get("powerdc4") != null ? result.get("powerdc4").toNumber() : 0)).toDouble() / 1000;
 
         // ICONS
         _yieldTodayIcon.setBitmap(Rez.Drawables.yield);
@@ -82,7 +82,11 @@ class SolaxCloudView extends WatchUi.View {
         // TEXT DATA
         _yieldToday.setText(result.get("yieldtoday").format("%.2f") + " kWh");
         _feedIn.setText(result.get("feedinpower").toNumber() + " W");
-        _panel.setText(panelPower + " W");
+        _panel.setText(
+            panelPower.format("%.2f") + " kW (" 
+            + (result.get("powerdc1") != null ? (result.get("powerdc1").toDouble() / 1000).format("%.2f") : "")
+            + (result.get("powerdc2") != null ? ", " + (result.get("powerdc2").toDouble() / 1000).format("%.2f") : "")
+            + (result.get("powerdc3") != null ? ", " + (result.get("powerdc3").toDouble() / 1000).format("%.2f") : "") + ")");
         _soc.setText(result.get("soc").toNumber() + " %");
         _updateTime.setText(result.get("uploadTime"));
         }
