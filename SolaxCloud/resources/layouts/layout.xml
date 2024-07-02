@@ -23,23 +23,21 @@
     font="Gfx.FONT_TINY"
     justification="Gfx.TEXT_JUSTIFY_CENTER"
     />
-    <bitmap id="panelicon" filename="../drawables/panel.png" x="20%" y="25%"/>
+    <bitmap id="panelicon" filename="../drawables/panel.png" x="5%" y="25%"/>
     <label 
     text=""
     id="panel"
-    x="center"
+    x="16%"
     y="25%"
     font="Gfx.FONT_TINY"
-    justification="Gfx.TEXT_JUSTIFY_CENTER"
     />
     <bitmap id="feedin" filename="../drawables/feedin.png" x="10%" y="35%" />
     <label 
     text=""
     id="feed_in"
-    x="35%"
+    x="25%"
     y="35%"
     font="Gfx.FONT_TINY"
-    justification="Gfx.TEXT_JUSTIFY_CENTER"
     />
     <bitmap id="battery" filename="../drawables/battery.png" x="50%" y="35%" />
     <label 
