@@ -5,5 +5,6 @@
     <bitmap id="panelicon" filename="panel.png" />
     <bitmap id="feedin" filename="feedin.png" />
     <bitmap id="battery" filename="battery.png" />
-    <bitmap id="battery_charge" filename="battery-charge.png" />
+    <bitmap id="battery_charge" filename="battery-charge.png"/>
+    <bitmap id="loadicon" filename="home.png" />
 </drawables>
