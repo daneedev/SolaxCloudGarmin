@@ -10,11 +10,16 @@ class SolaxCloudView extends WatchUi.View {
     private var _soc;
     private var _updateTime;
     private var _error;
+    private var _load;
+    private var _batteryPower;
 
     private var _feedInIcon;
     private var _yieldTodayIcon;
     private var _panelicon;
     private var _socIcon;
+    private var _loadIcon;
+    private var _batteryPowerIcon;
+    private var _refreshIcon;
 
     private var request;
     function initialize() {
@@ -30,12 +35,16 @@ class SolaxCloudView extends WatchUi.View {
         _soc = findDrawableById("soc");
         _updateTime = findDrawableById("update_time");
         _error = findDrawableById("error");
+        _load = findDrawableById("load");
+        _batteryPower = findDrawableById("batterypower");
 
         _yieldTodayIcon = findDrawableById("yield");
         _panelicon = findDrawableById("panelicon");
         _socIcon = findDrawableById("battery");
         _feedInIcon = findDrawableById("feedin");
-
+        _loadIcon = findDrawableById("loadicon");
+        _batteryPowerIcon = findDrawableById("battery_charge");
+        _refreshIcon = findDrawableById("refresh");
     }
 
     // Called when this View is brought to the foreground. Restore
@@ -79,16 +88,21 @@ class SolaxCloudView extends WatchUi.View {
         _feedInIcon.setBitmap(Rez.Drawables.feedin);
         _panelicon.setBitmap(Rez.Drawables.panelicon);
         _socIcon.setBitmap(Rez.Drawables.battery);
+        _loadIcon.setBitmap(Rez.Drawables.loadicon);
+        _batteryPowerIcon.setBitmap(Rez.Drawables.battery_charge);
+        _refreshIcon.setBitmap(Rez.Drawables.refresh);
         // TEXT DATA
         _yieldToday.setText(result.get("yieldtoday").format("%.2f") + " kWh");
         _feedIn.setText(result.get("feedinpower").toNumber() + " W");
         _panel.setText(
-            panelPower.format("%.2f") + " kW (" 
+            panelPower.format("%.2f") + " (" 
             + (result.get("powerdc1") != null ? (result.get("powerdc1").toDouble() / 1000).format("%.2f") : "")
             + (result.get("powerdc2") != null ? ", " + (result.get("powerdc2").toDouble() / 1000).format("%.2f") : "")
             + (result.get("powerdc3") != null ? ", " + (result.get("powerdc3").toDouble() / 1000).format("%.2f") : "") + ")");
         _soc.setText(result.get("soc").toNumber() + " %");
-        _updateTime.setText(result.get("uploadTime"));
+        _load.setText((result.get("acpower").toNumber() - result.get("feedinpower").toNumber()) + " W");
+        _batteryPower.setText(result.get("batPower").toNumber() + " W");
+        _updateTime.setText(result.get("uploadTime").substring(10, 19));
         }
         WatchUi.requestUpdate();
     }
@@ -98,6 +112,9 @@ class SolaxCloudView extends WatchUi.View {
         _feedInIcon.setBitmap(Rez.Drawables.blank);
         _panelicon.setBitmap(Rez.Drawables.blank);
         _socIcon.setBitmap(Rez.Drawables.blank);
+        _loadIcon.setBitmap(Rez.Drawables.blank);
+        _batteryPowerIcon.setBitmap(Rez.Drawables.blank);
+        _refreshIcon.setBitmap(Rez.Drawables.blank);
         _error.setText(message);
     }
 
