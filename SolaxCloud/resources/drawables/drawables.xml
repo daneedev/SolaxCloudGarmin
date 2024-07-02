@@ -2,12 +2,8 @@
     <bitmap id="LauncherIcon" filename="logo.png" />
     <bitmap id="blank" filename="blank.png" />
     <bitmap id="yield" filename="yield.png" />
-    <bitmap id="panel1" filename="panel.png" />
-    <bitmap id="panel2" filename="panel.png" />
-    <bitmap id="panel3" filename="panel.png" />
-    <bitmap id="panel4" filename="panel.png" />
+    <bitmap id="panelicon" filename="panel.png" />
     <bitmap id="feedin" filename="feedin.png" />
     <bitmap id="battery" filename="battery.png" />
-    <bitmap id="acpower" filename="acpower.png" />
     <bitmap id="battery_charge" filename="battery-charge.png" />
 </drawables>
