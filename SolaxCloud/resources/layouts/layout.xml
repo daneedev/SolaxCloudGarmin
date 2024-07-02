@@ -3,7 +3,7 @@
     text="SolaxCloud"
     x="center"
     y="5%"
-    font="Gfx.FONT_SMALL"
+    font="Gfx.FONT_MEDIUM"
     justification="Gfx.TEXT_JUSTIFY_CENTER"
     />
     <label
@@ -14,46 +14,62 @@
     font="Gfx.FONT_SMALL"
     justification="Gfx.TEXT_JUSTIFY_CENTER"
     />
-    <bitmap id="yield" filename="../drawables/yield.png" x="20%" y="15%"/>
+    <bitmap id="yield" filename="../drawables/yield.png" x="18%" y="18%"/>
     <label 
     text=""
     id="yield_today"
     x="center"
-    y="15%"
-    font="Gfx.FONT_TINY"
+    y="18%"
+    font="Gfx.FONT_SMALL"
     justification="Gfx.TEXT_JUSTIFY_CENTER"
     />
-    <bitmap id="panelicon" filename="../drawables/panel.png" x="5%" y="25%"/>
+    <bitmap id="panelicon" filename="../drawables/panel.png" x="5%" y="31%"/>
     <label 
     text=""
     id="panel"
-    x="16%"
-    y="25%"
-    font="Gfx.FONT_TINY"
+    x="18%"
+    y="31%"
+    font="Gfx.FONT_SMALL"
     />
-    <bitmap id="feedin" filename="../drawables/feedin.png" x="10%" y="35%" />
+    <bitmap id="loadicon" filename="../drawables/home.png" x="10%" y="43%"/>
+    <label
+    text=""
+    id="load"
+    x="22%"
+    y="43%"
+    font="Gfx.FONT_SMALL"
+    />
+    <bitmap id="battery_charge" filename="../drawables/battery-charge.png" x="50%" y="43%"/>
+    <label
+    text=""
+    id="batterypower"
+    x="65%"
+    y="43%"
+    font="Gfx.FONT_SMALL"
+    />
+    <bitmap id="feedin" filename="../drawables/feedin.png" x="10%" y="56%" />
     <label 
     text=""
     id="feed_in"
-    x="25%"
-    y="35%"
-    font="Gfx.FONT_TINY"
+    x="22%"
+    y="56%"
+    font="Gfx.FONT_SMALL"
     />
-    <bitmap id="battery" filename="../drawables/battery.png" x="50%" y="35%" />
+    <bitmap id="battery" filename="../drawables/battery.png" x="50%" y="56%" />
     <label 
     text=""
     id="soc"
     x="75%"
-    y="35%"
-    font="Gfx.FONT_TINY"
+    y="56%"
+    font="Gfx.FONT_SMALL"
     justification="Gfx.TEXT_JUSTIFY_CENTER"
     />
     <label 
     text=""
     id="update_time"
     x="center"
-    y="45%"
-    font="Gfx.FONT_TINY"
+    y="69%"
+    font="Gfx.FONT_SMALL"
     justification="Gfx.TEXT_JUSTIFY_CENTER"
     />
 </layout>
