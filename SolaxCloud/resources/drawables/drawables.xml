@@ -7,4 +7,5 @@
     <bitmap id="battery" filename="battery.png" />
     <bitmap id="battery_charge" filename="battery-charge.png"/>
     <bitmap id="loadicon" filename="home.png" />
+    <bitmap id="refresh" filename="refresh.png"/>
 </drawables>

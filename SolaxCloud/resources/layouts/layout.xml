@@ -64,6 +64,7 @@
     font="Gfx.FONT_SMALL"
     justification="Gfx.TEXT_JUSTIFY_CENTER"
     />
+    <bitmap id="refresh" filename="../drawables/refresh.png" x="20%" y="69%" />
     <label 
     text=""
     id="update_time"
