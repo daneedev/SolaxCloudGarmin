@@ -1,4 +1,5 @@
 <properties>
     <property id="tokenId" type="string"></property>
     <property id="InverterSerial" type="string"></property>
+    <property id="RefreshPeriod" type="number">300</property>
 </properties>
