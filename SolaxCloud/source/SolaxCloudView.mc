@@ -112,8 +112,8 @@ class SolaxCloudView extends WatchUi.View {
 
         var refreshPeriod = Properties.getValue("RefreshPeriod");
         var currentTime = Gregorian.info(Time.now(), Time.FORMAT_MEDIUM);
-        var currentSec = currentTime.min * 60 + currentTime.sec;
-        var updateSec = result.get("uploadTime").substring(14, 16).toNumber() * 60 + result.get("uploadTime").substring(17, 19).toNumber();
+        var currentSec = currentTime.hour * 3600 + currentTime.min * 60 + currentTime.sec;
+        var updateSec = result.get("uploadTime").substring(11, 13).toNumber() * 3600 + result.get("uploadTime").substring(14, 16).toNumber() * 60 + result.get("uploadTime").substring(17, 19).toNumber();
         var nextUpdate = refreshPeriod - (currentSec - updateSec);
         _updateTime.setText(result.get("uploadTime").substring(10, 19) + "\n(" + nextUpdate / 60 + ":" + addZero(nextUpdate % 60) + ")");
         // PREVENT TOO MANY TIMERS ERROR
@@ -137,8 +137,8 @@ class SolaxCloudView extends WatchUi.View {
     function updateTimeText() as Void {
         var refreshPeriod = Properties.getValue("RefreshPeriod");
         var currentTime = Gregorian.info(Time.now(), Time.FORMAT_MEDIUM);
-        var currentSec = currentTime.min * 60 + currentTime.sec;
-        var updateSec = result.get("uploadTime").substring(14, 16).toNumber() * 60 + result.get("uploadTime").substring(17, 19).toNumber();
+        var currentSec = currentTime.hour * 3600 + currentTime.min * 60 + currentTime.sec;
+        var updateSec = result.get("uploadTime").substring(11, 13).toNumber() * 3600 + result.get("uploadTime").substring(14, 16).toNumber() * 60 + result.get("uploadTime").substring(17, 19).toNumber();
         var nextUpdate = refreshPeriod - (currentSec - updateSec);
         _updateTime.setText(result.get("uploadTime").substring(10, 19) + "\n(" + nextUpdate / 60 + ":" + addZero(nextUpdate % 60) + ")");
         WatchUi.requestUpdate();
