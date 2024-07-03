@@ -2,6 +2,8 @@ import Toybox.Graphics;
 import Toybox.WatchUi;
 import Toybox.Math; 
 import Toybox.Application;
+import Toybox.Timer;
+import Toybox.Time;
 
 class SolaxCloudView extends WatchUi.View {
     private var _yieldToday;
@@ -22,6 +24,11 @@ class SolaxCloudView extends WatchUi.View {
     private var _refreshIcon;
 
     private var request;
+    private var result;
+    private var lastUpdateSec;
+    
+    private var timer = new Timer.Timer();
+    private var timer2 = new Timer.Timer();
     function initialize() {
         View.initialize();
     }
@@ -75,7 +82,7 @@ class SolaxCloudView extends WatchUi.View {
         } else if  (data.get(:data).get("result") == null) {
             request.makeRequest();
         } else {
-        var result = data.get(:data).get("result");
+        result = data.get(:data).get("result");
         _error.setText("");
         // COUNT THE PANEL POWER
        var panelPower = ((result.get("powerdc1") != null ? result.get("powerdc1").toNumber() : 0) +
@@ -102,9 +109,46 @@ class SolaxCloudView extends WatchUi.View {
         _soc.setText(result.get("soc").toNumber() + " %");
         _load.setText((result.get("acpower").toNumber() - result.get("feedinpower").toNumber()) + " W");
         _batteryPower.setText(result.get("batPower").toNumber() + " W");
-        _updateTime.setText(result.get("uploadTime").substring(10, 19));
+
+        var refreshPeriod = Properties.getValue("RefreshPeriod");
+        var currentTime = Gregorian.info(Time.now(), Time.FORMAT_MEDIUM);
+        var currentSec = currentTime.min * 60 + currentTime.sec;
+        var updateSec = result.get("uploadTime").substring(14, 16).toNumber() * 60 + result.get("uploadTime").substring(17, 19).toNumber();
+        var nextUpdate = refreshPeriod - (currentSec - updateSec);
+        _updateTime.setText(result.get("uploadTime").substring(10, 19) + "\n(" + nextUpdate / 60 + ":" + addZero(nextUpdate % 60) + ")");
+        // PREVENT TOO MANY TIMERS ERROR
+        timer2.stop();
+        timer2.start(method(:updateTimeText), 1000, true);
+        if (lastUpdateSec == updateSec) {
+            timer.start(method(:fetchAgain), 30000, false);
+            System.println("Fetched after 30 s");
+        } else {
+            lastUpdateSec = updateSec;
+            timer.start(method(:fetchAgain), nextUpdate * 1000, false);
+        }
         }
         WatchUi.requestUpdate();
+    }
+
+    function fetchAgain() as Void {
+        request.makeRequest();
+    }
+
+    function updateTimeText() as Void {
+        var refreshPeriod = Properties.getValue("RefreshPeriod");
+        var currentTime = Gregorian.info(Time.now(), Time.FORMAT_MEDIUM);
+        var currentSec = currentTime.min * 60 + currentTime.sec;
+        var updateSec = result.get("uploadTime").substring(14, 16).toNumber() * 60 + result.get("uploadTime").substring(17, 19).toNumber();
+        var nextUpdate = refreshPeriod - (currentSec - updateSec);
+        _updateTime.setText(result.get("uploadTime").substring(10, 19) + "\n(" + nextUpdate / 60 + ":" + addZero(nextUpdate % 60) + ")");
+        WatchUi.requestUpdate();
+    }
+
+    function addZero(i) {
+        if (i < 10 && i >= 0) {
+            i = "0" + i.toString();
+        }
+        return i;
     }
 
     function showError(message) {
