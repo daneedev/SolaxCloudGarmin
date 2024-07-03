@@ -1,6 +1,6 @@
 <layout id="MainLayout">
     <label 
-    text="SolaxCloud"
+    text="SolaXCloud"
     x="center"
     y="5%"
     font="Gfx.FONT_MEDIUM"
