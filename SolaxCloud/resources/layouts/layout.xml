@@ -39,11 +39,11 @@
     y="43%"
     font="Gfx.FONT_SMALL"
     />
-    <bitmap id="battery_charge" filename="../drawables/battery-charge.png" x="50%" y="43%"/>
+    <bitmap id="battery_charge" filename="../drawables/battery-charge.png" x="55%" y="43%"/>
     <label
     text=""
     id="batterypower"
-    x="65%"
+    x="70%"
     y="43%"
     font="Gfx.FONT_SMALL"
     />
@@ -55,11 +55,11 @@
     y="56%"
     font="Gfx.FONT_SMALL"
     />
-    <bitmap id="battery" filename="../drawables/battery.png" x="50%" y="56%" />
+    <bitmap id="battery" filename="../drawables/battery.png" x="55%" y="56%" />
     <label 
     text=""
     id="soc"
-    x="75%"
+    x="80%"
     y="56%"
     font="Gfx.FONT_SMALL"
     justification="Gfx.TEXT_JUSTIFY_CENTER"
