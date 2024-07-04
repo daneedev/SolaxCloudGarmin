@@ -119,9 +119,9 @@ class SolaxCloudView extends WatchUi.View {
         // PREVENT TOO MANY TIMERS ERROR
         timer2.stop();
         timer2.start(method(:updateTimeText), 1000, true);
+        var periodAfterError = Properties.getValue("PeriodAfterError");
         if (lastUpdateSec == updateSec) {
-            timer.start(method(:fetchAgain), 30000, false);
-            System.println("Fetched after 30 s");
+            timer.start(method(:fetchAgain), periodAfterError * 1000, false);
         } else {
             lastUpdateSec = updateSec;
             timer.start(method(:fetchAgain), nextUpdate * 1000, false);

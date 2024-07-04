@@ -2,4 +2,5 @@
     <property id="tokenId" type="string"></property>
     <property id="InverterSerial" type="string"></property>
     <property id="RefreshPeriod" type="number">300</property>
+    <property id="PeriodAfterError" type="number">30</property>
 </properties>

@@ -8,6 +8,10 @@
     </setting>
 
     <setting propertyKey="@Properties.RefreshPeriod" title="Time refresh period">
-        <settingConfig type="numeric" required="true" />
+        <settingConfig type="numeric" required="true" min="60" />
+    </setting>
+
+    <setting propertyKey="@Properties.PeriodAfterError" title="Refresh period after error">
+        <settingConfig type="numeric" required="true" min="15" />
     </setting>
 </settings>
