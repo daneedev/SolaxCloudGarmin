@@ -100,15 +100,15 @@ class SolaxCloudView extends WatchUi.View {
         _refreshIcon.setBitmap(Rez.Drawables.refresh);
         // TEXT DATA
         _yieldToday.setText(result.get("yieldtoday").format("%.2f") + " kWh");
-        _feedIn.setText(result.get("feedinpower").toNumber() + " W");
+        _feedIn.setText((result.get("feedinpower").toDouble() / 1000).format("%.2f") + " kW");
         _panel.setText(
             panelPower.format("%.2f") + " (" 
             + (result.get("powerdc1") != null ? (result.get("powerdc1").toDouble() / 1000).format("%.2f") : "")
             + (result.get("powerdc2") != null ? ", " + (result.get("powerdc2").toDouble() / 1000).format("%.2f") : "")
             + (result.get("powerdc3") != null ? ", " + (result.get("powerdc3").toDouble() / 1000).format("%.2f") : "") + ")");
         _soc.setText(result.get("soc").toNumber() + " %");
-        _load.setText((result.get("acpower").toNumber() - result.get("feedinpower").toNumber()) + " W");
-        _batteryPower.setText(result.get("batPower").toNumber() + " W");
+        _load.setText(((result.get("acpower").toNumber() - result.get("feedinpower").toNumber()).toDouble() / 1000).format("%.2f") + " kW");
+        _batteryPower.setText((result.get("batPower").toDouble() / 1000).format("%.2f") + " kW");
 
         var refreshPeriod = Properties.getValue("RefreshPeriod");
         var currentTime = Gregorian.info(Time.now(), Time.FORMAT_MEDIUM);
