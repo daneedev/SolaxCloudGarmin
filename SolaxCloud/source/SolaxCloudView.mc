@@ -76,7 +76,7 @@ class SolaxCloudView extends WatchUi.View {
         if (data.get(:wifi) == false) {
             showError("Wifi is not available");
         } else if (data.get(:data).equals("BLE_ERROR")) { 
-            showError("Phone is not connected");
+            showError("Phone is not connected\n via bluetooth");
         }  else if (data.get(:data).get("code") == 103) {
             showError("Invalid Token ID");
         } else if (data.get(:data).get("code") == 0 && data.get(:data).get("success") == false) {
