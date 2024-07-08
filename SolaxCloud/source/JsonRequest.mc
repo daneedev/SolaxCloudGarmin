@@ -45,6 +45,9 @@ class JsonRequest {
             System.println("Data received.");
             callback.invoke({:wifi => true, :data => data}); // Return data using callback
         } else {
+            if (responseCode == -104) {
+                callback.invoke({:wifi => true, :data => "BLE_ERROR"});
+            }
             System.println("Error: " + responseCode);
         }
     }

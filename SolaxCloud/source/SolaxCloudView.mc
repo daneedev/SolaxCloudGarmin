@@ -75,7 +75,9 @@ class SolaxCloudView extends WatchUi.View {
     function receiveData(data) {
         if (data.get(:wifi) == false) {
             showError("Wifi is not available");
-        } else if (data.get(:data).get("code") == 103) {
+        } else if (data.get(:data).equals("BLE_ERROR")) { 
+            showError("Phone is not connected");
+        }  else if (data.get(:data).get("code") == 103) {
             showError("Invalid Token ID");
         } else if (data.get(:data).get("code") == 0 && data.get(:data).get("success") == false) {
             showError("Invalid Inverter Serial");
@@ -147,6 +149,8 @@ class SolaxCloudView extends WatchUi.View {
     function addZero(i) {
         if (i < 10 && i >= 0) {
             i = "0" + i.toString();
+        } else if (i < 0 && i > -10) {
+            i = "-0" + (i - i - i).toString();
         }
         return i;
     }
