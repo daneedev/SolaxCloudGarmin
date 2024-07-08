@@ -124,6 +124,8 @@ class SolaxCloudView extends WatchUi.View {
         var periodAfterError = Properties.getValue("PeriodAfterError");
         if (lastUpdateSec == updateSec) {
             timer.start(method(:fetchAgain), periodAfterError * 1000, false);
+            _updateTime.setColor(Graphics.COLOR_RED);
+            _updateTime.setText(result.get("uploadTime").substring(10, 19) + "\n(No update)");
         } else {
             lastUpdateSec = updateSec;
             timer.start(method(:fetchAgain), nextUpdate * 1000, false);
@@ -142,6 +144,7 @@ class SolaxCloudView extends WatchUi.View {
         var currentSec = currentTime.hour * 3600 + currentTime.min * 60 + currentTime.sec;
         var updateSec = result.get("uploadTime").substring(11, 13).toNumber() * 3600 + result.get("uploadTime").substring(14, 16).toNumber() * 60 + result.get("uploadTime").substring(17, 19).toNumber();
         var nextUpdate = refreshPeriod - (currentSec - updateSec);
+        _updateTime.setColor(Graphics.COLOR_WHITE);
         _updateTime.setText(result.get("uploadTime").substring(10, 19) + "\n(" + nextUpdate / 60 + ":" + addZero(nextUpdate % 60) + ")");
         WatchUi.requestUpdate();
     }
