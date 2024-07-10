@@ -75,8 +75,10 @@ class SolaxCloudView extends WatchUi.View {
     function receiveData(data) {
         if (data.get(:wifi) == false) {
             showError("Wifi is not available");
+            timer.start(method(:fetchAgain), 30000, true);
         } else if (data.get(:data).equals("BLE_ERROR")) { 
             showError("Phone is not connected\n via bluetooth");
+            timer.start(method(:fetchAgain), 30000, true);
         }  else if (data.get(:data).get("code") == 103) {
             showError("Invalid Token ID");
         } else if (data.get(:data).get("code") == 0 && data.get(:data).get("success") == false) {
@@ -84,6 +86,7 @@ class SolaxCloudView extends WatchUi.View {
         } else if  (data.get(:data).get("result") == null) {
             request.makeRequest();
         } else {
+        timer.stop();
         result = data.get(:data).get("result");
         _error.setText("");
         // COUNT THE PANEL POWER
@@ -166,6 +169,12 @@ class SolaxCloudView extends WatchUi.View {
         _loadIcon.setBitmap(Rez.Drawables.blank);
         _batteryPowerIcon.setBitmap(Rez.Drawables.blank);
         _refreshIcon.setBitmap(Rez.Drawables.blank);
+        _yieldToday.setText("");
+        _feedIn.setText("");
+        _panel.setText("");
+        _soc.setText("");
+        _load.setText("");
+        _batteryPower.setText("");
         _error.setText(message);
     }
 
