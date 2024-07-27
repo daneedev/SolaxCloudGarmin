@@ -120,7 +120,7 @@ class SolaxCloudView extends WatchUi.View {
         var currentSec = currentTime.hour * 3600 + currentTime.min * 60 + currentTime.sec;
         var updateSec = result.get("uploadTime").substring(11, 13).toNumber() * 3600 + result.get("uploadTime").substring(14, 16).toNumber() * 60 + result.get("uploadTime").substring(17, 19).toNumber();
         var nextUpdate = refreshPeriod - (currentSec - updateSec);
-        _updateTime.setText(result.get("uploadTime").substring(10, 19) + "\n(" + nextUpdate / 60 + ":" + addZero(nextUpdate % 60) + ")");
+        _updateTime.setText(result.get("uploadTime").substring(10, 19) + "\n(" + addMinus(nextUpdate / 60, nextUpdate % 60) + ":" + addZero(nextUpdate % 60) + ")");
         // PREVENT TOO MANY TIMERS ERROR
         timer2.stop();
         timer2.start(method(:updateTimeText), 1000, true);
@@ -148,7 +148,7 @@ class SolaxCloudView extends WatchUi.View {
         var updateSec = result.get("uploadTime").substring(11, 13).toNumber() * 3600 + result.get("uploadTime").substring(14, 16).toNumber() * 60 + result.get("uploadTime").substring(17, 19).toNumber();
         var nextUpdate = refreshPeriod - (currentSec - updateSec);
         _updateTime.setColor(Graphics.COLOR_WHITE);
-        _updateTime.setText(result.get("uploadTime").substring(10, 19) + "\n(" + nextUpdate / 60 + ":" + addZero(nextUpdate % 60) + ")");
+        _updateTime.setText(result.get("uploadTime").substring(10, 19) + "\n(" + addMinus(nextUpdate / 60, nextUpdate % 60) + ":" + addZero(nextUpdate % 60) + ")");
         WatchUi.requestUpdate();
     }
 
@@ -156,9 +156,19 @@ class SolaxCloudView extends WatchUi.View {
         if (i < 10 && i >= 0) {
             i = "0" + i.toString();
         } else if (i < 0 && i > -10) {
-            i = "-0" + (i - i - i).toString();
+            i = "0" + (i - i - i).toString();
+        } else if (i < 0 && i <= -10) {
+            i = (i - i - i).toString();
         }
         return i;
+    }
+
+    function addMinus(a, b) {
+        if (a == 0 && b < 0) {
+            return "-0";
+        } else {
+            return a;
+        }
     }
 
     function showError(message) {
