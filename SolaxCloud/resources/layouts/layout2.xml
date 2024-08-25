@@ -1,0 +1,9 @@
+<layout id="SecondLayout">
+    <label 
+    text="test"
+    x="center"
+    y="center"
+    font="Gfx.FONT_MEDIUM"
+    justification="Gfx.TEXT_JUSTIFY_CENTER"
+    />
+</layout>
