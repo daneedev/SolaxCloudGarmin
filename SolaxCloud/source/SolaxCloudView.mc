@@ -67,9 +67,12 @@ class SolaxCloudView extends WatchUi.View {
                 showError("Inverter Serial is empty!");
                 return;
             }
-            showError("Loading...");
             request = new JsonRequest("https://eu.solaxcloud.com/proxyApp/proxy/api/getRealtimeInfo.do", {"tokenId" => tokenId, "sn" => inverterSerial}, method(:receiveData));
-            request.makeRequest();
+            if (Application.getApp().getFirstFetch() == false) {
+                showError("Loading...");
+                request.makeRequest();
+                Application.getApp().setFirstFetch(true);
+            }
     }
 
     function receiveData(data) {
