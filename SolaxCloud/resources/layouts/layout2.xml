@@ -1,9 +1,54 @@
 <layout id="SecondLayout">
+    <bitmap id="panelmax" filename="../drawables/panelmax.png" x="25%" y="10%"/>
     <label 
-    text="test"
+    text=""
+    id="panelmax_text"
     x="center"
-    y="center"
-    font="Gfx.FONT_MEDIUM"
+    y="10%"
+    font="Gfx.FONT_SMALL"
+    justification="Gfx.TEXT_JUSTIFY_CENTER"
+    />
+    <bitmap id="homemax" filename="../drawables/homemax.png" x="25%" y="25%"/>
+    <label 
+    text=""
+    id="homemax_text"
+    x="center"
+    y="25%"
+    font="Gfx.FONT_SMALL"
+    justification="Gfx.TEXT_JUSTIFY_CENTER"
+    />
+    <bitmap id="batterymax" filename="../drawables/batterymax.png" x="25%" y="40%"/>
+    <label 
+    text=""
+    id="batterymax_text"
+    x="center"
+    y="40%"
+    font="Gfx.FONT_SMALL"
+    justification="Gfx.TEXT_JUSTIFY_CENTER"
+    />
+    <bitmap id="feedinmax" filename="../drawables/feedinmax.png" x="25%" y="55%"/>
+    <label 
+    text=""
+    id="feedinmax_text"
+    x="center"
+    y="55%"
+    font="Gfx.FONT_SMALL"
+    justification="Gfx.TEXT_JUSTIFY_CENTER"
+    />
+    <label 
+    text="Version: v1.1.0"
+    id="version_text"
+    x="center"
+    y="70%"
+    font="Gfx.FONT_SMALL"
+    justification="Gfx.TEXT_JUSTIFY_CENTER"
+    />
+    <label 
+    text="Developer: Danee"
+    id="dev_text"
+    x="center"
+    y="80%"
+    font="Gfx.FONT_SMALL"
     justification="Gfx.TEXT_JUSTIFY_CENTER"
     />
 </layout>
