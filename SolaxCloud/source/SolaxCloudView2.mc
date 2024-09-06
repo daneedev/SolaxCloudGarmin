@@ -8,16 +8,30 @@ class SolaxCloudView2 extends WatchUi.View {
     function initialize() {
         View.initialize();
     }
+
+    private var _panelMax;
+    private var _homeMax;
+    private var _batteryMax;
+    private var _feedinMax;
+
     // Load your resources here
     function onLayout(dc as Dc) as Void {
         setLayout(Rez.Layouts.SecondLayout(dc));
 
+        _panelMax = findDrawableById("panelmax_text");
+        _homeMax = findDrawableById("homemax_text");
+        _batteryMax = findDrawableById("batterymax_text");
+        _feedinMax = findDrawableById("feedinmax_text");
     }
 
     // Called when this View is brought to the foreground. Restore
     // the state of this View and prepare it to be shown. This includes
     // loading resources into memory.
     function onShow() as Void {
+        _panelMax.setText(Storage.getValue("maxPanelPower").format("%.2f") + " kW");
+        _homeMax.setText(Storage.getValue("maxHomePower").format("%.2f") + " kW");
+        _batteryMax.setText(Storage.getValue("maxBatteryPower").format("%.2f") + " kW");
+        _feedinMax.setText(Storage.getValue("maxFeedinPower").format("%.2f") + " kW");
     }
 
 
