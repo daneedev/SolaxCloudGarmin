@@ -1,5 +1,5 @@
 <layout id="SecondLayout">
-    <bitmap id="panelmax" filename="../drawables/panelmax.png" x="25%" y="10%"/>
+    <bitmap id="panelmax" filename="../drawables/panelmax.png" x="20%" y="10%"/>
     <label 
     text=""
     id="panelmax_text"
@@ -8,7 +8,7 @@
     font="Gfx.FONT_SMALL"
     justification="Gfx.TEXT_JUSTIFY_CENTER"
     />
-    <bitmap id="homemax" filename="../drawables/homemax.png" x="25%" y="25%"/>
+    <bitmap id="homemax" filename="../drawables/homemax.png" x="20%" y="25%"/>
     <label 
     text=""
     id="homemax_text"
@@ -17,7 +17,7 @@
     font="Gfx.FONT_SMALL"
     justification="Gfx.TEXT_JUSTIFY_CENTER"
     />
-    <bitmap id="batterymax" filename="../drawables/batterymax.png" x="25%" y="40%"/>
+    <bitmap id="batterymax" filename="../drawables/batterymax.png" x="20%" y="40%"/>
     <label 
     text=""
     id="batterymax_text"
@@ -26,7 +26,7 @@
     font="Gfx.FONT_SMALL"
     justification="Gfx.TEXT_JUSTIFY_CENTER"
     />
-    <bitmap id="feedinmax" filename="../drawables/feedinmax.png" x="25%" y="55%"/>
+    <bitmap id="feedinmax" filename="../drawables/feedinmax.png" x="20%" y="55%"/>
     <label 
     text=""
     id="feedinmax_text"
