@@ -12,6 +12,10 @@ class SolaxCloudApp extends Application.AppBase {
     }
 
     function onStart(state as Dictionary?) as Void {
+        Storage.setValue("maxPanelPower", 0);
+        Storage.setValue("maxHomePower", 0);
+        Storage.setValue("maxBatteryPower", 0);
+        Storage.setValue("maxFeedinPower", 0);
     }
 
     // onStop() is called when your application is exiting
