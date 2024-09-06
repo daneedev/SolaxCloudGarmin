@@ -97,7 +97,7 @@ class SolaxCloudView extends WatchUi.View {
                         (result.get("powerdc2") != null ? result.get("powerdc2").toNumber() : 0) +
                         (result.get("powerdc3") != null ? result.get("powerdc3").toNumber() : 0) +
                         (result.get("powerdc4") != null ? result.get("powerdc4").toNumber() : 0)).toDouble() / 1000;
-
+        var homePower = ((result.get("acpower").toNumber() - result.get("feedinpower").toNumber()).toDouble() / 1000);
         // ICONS
         _yieldTodayIcon.setBitmap(Rez.Drawables.yield);
         _feedInIcon.setBitmap(Rez.Drawables.feedin);
@@ -115,7 +115,7 @@ class SolaxCloudView extends WatchUi.View {
             + (result.get("powerdc2") != null ? ", " + (result.get("powerdc2").toDouble() / 1000).format("%.2f") : "")
             + (result.get("powerdc3") != null ? ", " + (result.get("powerdc3").toDouble() / 1000).format("%.2f") : "") + ")");
         _soc.setText(result.get("soc").toNumber() + " %");
-        _load.setText(((result.get("acpower").toNumber() - result.get("feedinpower").toNumber()).toDouble() / 1000).format("%.2f") + " kW");
+        _load.setText(homePower.format("%.2f") + " kW");
         _batteryPower.setText((result.get("batPower").toDouble() / 1000).format("%.2f") + " kW");
 
         var refreshPeriod = Properties.getValue("RefreshPeriod");
@@ -136,10 +136,23 @@ class SolaxCloudView extends WatchUi.View {
             lastUpdateSec = updateSec;
             timer.start(method(:fetchAgain), nextUpdate * 1000, false);
         }
+
+        // SAVE MAX VALUES
+        if (panelPower > Storage.getValue("maxPanelPower").toDouble()) {
+            Storage.setValue("maxPanelPower", panelPower);
+        }
+        if (homePower > Storage.getValue("maxHomePower").toDouble()) {
+            Storage.setValue("maxHomePower", homePower);
+        }
+        if ((result.get("batPower").toDouble() / 1000) > Storage.getValue("maxBatteryPower").toDouble()) {
+            Storage.setValue("maxBatteryPower", (result.get("batPower").toDouble() / 1000));
+        }
+        if ((result.get("feedinpower").toDouble() / 1000) > Storage.getValue("maxFeedinPower").toDouble()) {
+            Storage.setValue("maxFeedinPower", (result.get("feedinpower").toDouble() / 1000));
         }
         WatchUi.requestUpdate();
     }
-
+}
     function fetchAgain() as Void {
         request.makeRequest();
     }
